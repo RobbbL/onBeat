@@ -1,0 +1,191 @@
+<ion-content [fullscreen]="true" class="registration-content">
+
+  <div class="registration-header">
+    <h1>Registrazione</h1>
+    <p class="subtitle">Registrati e accedi a tutte le funzionalità di OnBeat!</p>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" class="registration-form">
+
+    <div class="formCard">
+      <div class="cardHeader">
+        <h2>Informazioni Personali</h2>
+      </div>
+
+      <div class="inputGroup">
+        <label>Nome *</label>
+        <ion-input
+          type="text"
+          placeholder="Inserisci il tuo nome"
+          [(ngModel)]="user.firstName"
+          name="nome"
+          required>
+        </ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Cognome *</label>
+        <ion-input
+          type="text"
+          placeholder="Inserisci il tuo cognome"
+          [(ngModel)]="user.lastName"
+          name="cognome"
+          required>
+        </ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Username *</label>
+        <ion-input
+          type="text"
+          placeholder="Scegli un username"
+          [(ngModel)]="user.username"
+          name="username"
+          required>
+        </ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Email *</label>
+        <ion-input
+          type="email"
+          placeholder="esempio@mail.com"
+          [(ngModel)]="user.email"
+          name="email"
+          required>
+        </ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Cellulare *</label>
+        <ion-input
+          type="tel"
+          placeholder="Inserisci il numero di telefono"
+          [(ngModel)]="user.phone"
+          name="phone"
+          required>
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="formCard">
+      <div class="cardHeader">
+        <h2>Password</h2>
+      </div>
+
+      <div class="inputGroup">
+        <label>Password *</label>
+        <ion-input
+          type="password"
+          placeholder="Crea una password"
+          [(ngModel)]="user.password"
+          name="password"
+          required>
+        </ion-input>
+        <p class="required-text" style="margin-top: 2px;">Minimo 8 caratteri, una maiuscola e un numero.</p>
+      </div>
+
+      <div class="inputGroup">
+        <label>Conferma Password *</label>
+        <ion-input
+          type="password"
+          placeholder="Ripeti la password"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          required>
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="formCard">
+      <div class="cardHeader">
+        <h2>Indirizzo di Residenza</h2>
+      </div>
+
+      <div class="inputGroup">
+        <label>Paese *</label>
+        <ion-input
+          type="text"
+          placeholder="Es. Italia"
+          [(ngModel)]="user.shippingAddress.country"
+          name="paese"
+          required>
+        </ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Provincia *</label>
+        <ion-input
+          type="text"
+          maxlength="2"
+          placeholder="PA"
+          [(ngModel)]="user.shippingAddress.provinceCode"
+          name="provincia"
+          required>
+        </ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Città *</label>
+        <ion-input
+          type="text"
+          placeholder="Inserisci la città"
+          [(ngModel)]="user.shippingAddress.city"
+          name="citta"
+          required>
+        </ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>CAP *</label>
+        <ion-input
+          type="text"
+          placeholder="Es. 90100"
+          [(ngModel)]="user.shippingAddress.zipcode"
+          name="cap"
+          required>
+        </ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Via / Piazza *</label>
+        <ion-input
+          type="text"
+          placeholder="Es. Via Roma"
+          [(ngModel)]="user.shippingAddress.street"
+          name="via"
+          required>
+        </ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Numero Civico *</label>
+        <ion-input
+          type="number"
+          placeholder="Es. 12"
+          [(ngModel)]="user.shippingAddress.streetNumber"
+          name="civico"
+          required>
+        </ion-input>
+      </div>
+    </div>
+
+    <p class="required-text">* Campo obbligatorio</p>
+
+    <div class="error-container" *ngIf="errorMessage">
+      <p class="error-text">{{ errorMessage }}</p>
+    </div>
+
+    <div class="button-container">
+      <ion-button expand="block" type="submit" class="submitBtn">
+        Invia
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" type="reset" class="resetBtn">
+        Reset
+      </ion-button>
+    </div>
+
+  </form>
+  
+</ion-content>

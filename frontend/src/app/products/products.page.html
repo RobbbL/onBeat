@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true">
+
+  <app-title-space 
+    title = "Dettagli Prodotto"
+    subtitle = "Trova tutte le informazioni che ti servono sul prodotto!">
+  </app-title-space>
+
+  <div class="detail-container">
+    
+    <div class="product-image-wrapper">
+      <img src="{{product?.image}}" alt="Immagine Articolo" class="product-image" />
+    </div>
+
+    <div class="product-info-wrapper">
+      <div class="product-header">
+        <h1 class="product-title">{{product?.name}}</h1>
+        <div class="product-price">
+          <span class="amount">{{product?.price}}</span>
+          <span class="currency">€</span>
+        </div>
+      </div>
+
+      <div class="product-divider"></div>
+
+      <div class="product-description">
+        <h3>Descrizione</h3>
+        <p>
+          {{product?.description}}
+        </p>
+      </div>
+
+      <div class="product-actions">
+        <button class="add-to-cart-btn" (click)="addToCart()">
+          <span class="icon">🛒</span> Aggiungi al carrello
+        </button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

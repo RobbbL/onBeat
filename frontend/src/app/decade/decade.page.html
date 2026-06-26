@@ -1,0 +1,66 @@
+<ion-content fullscreen>
+    <app-title-screen
+        [title]="decadeInfo ? decadeInfo.year + 's' : ''"
+        [subtitle]="decadeInfo?.description || ''"
+        [imgBg]="decadeInfo?.titleimg || ''">
+    </app-title-screen>
+
+    <div class="main-container">
+        <section class="story">
+            <h2>Breve Storia</h2>
+            <div class="story-card">
+                <p>{{ decadeInfo?.history?.join(' ') }}</p>
+            </div>
+        </section>
+
+        <section class="artistsList">
+            <h2>Artisti</h2>
+            <ion-grid>
+                <ion-row> 
+                    <ion-col size="6" size-sm="4" size-md="3" *ngFor="let artist of artists">
+                        <ion-card button class="artistCard" [routerLink]="['/artist', artist?.id]">
+                            <div class="img-container">
+                                <img [src]="artist?.image" [alt]="artist?.name" loading="lazy"/>
+                                <div class="like-overlay">
+                                    <div class="like-badge">
+                                        <ion-icon name="heart"></ion-icon>
+                                        <span>{{ artist?.likeCount || 0 }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <ion-card-header>
+                                <ion-card-title>{{ artist?.name }}</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <p class="desc">{{ artist?.description }}</p>
+                                <p class="genre">{{ artist?.genre }}</p>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </section>
+
+        <section class="RadioList">
+            <h2>Radio</h2>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="6" size-sm="4" size-md="3" *ngFor="let radio of radios">
+                        <ion-card button class="radioCard" [routerLink]="['/radio', radio?.id]">
+                            <div class="img-container">
+                                <img [src]="radio?.image" [alt]="radio?.name" loading="lazy"/>
+                            </div>
+                            <ion-card-header>
+                                <ion-card-title>{{ radio?.name }}</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <p class="desc">{{ radio?.description }}</p>
+                                <p class="hometown">{{ radio?.hometown }}</p>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </section>
+    </div>
+</ion-content>

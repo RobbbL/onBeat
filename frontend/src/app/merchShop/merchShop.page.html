@@ -1,0 +1,40 @@
+<ion-content fullscreen>
+    <app-title-space 
+        title = "{{ artist?.name || 'Shop' }}"
+        subtitle = "{{ artist?.description || 'Scopri i nostri prodotti esclusivi' }}">
+    </app-title-space>
+
+    <section class="shop">
+        <h2>Shop</h2>
+        
+        <ion-grid class="ion-no-padding">
+            <ion-row>
+                <ion-col size="6" size-sm="4" size-md="3" *ngFor="let product of products">
+
+                    <ion-card button class="productCard">
+                        
+                        <div [routerLink]="['/products', product?.id]">
+
+                        <div class="prod-img-box" >
+                            <img [src]="product?.image" [alt]="product?.name"/>
+                        </div>
+
+                        <ion-card-header>
+                            <ion-card-title>{{ product?.name }}</ion-card-title>
+                        </ion-card-header>
+                     
+                        <ion-card-content>
+                            <p class="price">{{ product?.price }}</p>
+                        </ion-card-content>
+                        
+                        </div>
+
+                        <button class="buy-btn" (click)="addToCart(product)">Acquista</button>
+
+                    </ion-card>
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </section>
+</ion-content>

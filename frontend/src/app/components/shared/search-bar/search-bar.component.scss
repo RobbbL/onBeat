@@ -1,0 +1,95 @@
+.searchContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.searchBar {
+  display: block;
+  width: min(80vw, 450px);
+  height: clamp(40px, 5vh, 60px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+
+  margin-top: 5vh;
+  padding: 0 20px;
+
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(5px);
+
+  color: white;
+  font-size: 1rem;
+
+  outline: none;
+  transition: all 0.3s ease;
+
+  z-index: 5;
+}
+
+.searchBar::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.searchBar:focus {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.15);
+}
+
+.searchResults {
+  position: absolute;
+  top: calc(100% + 10px);
+
+  width: min(80vw, 450px);
+  max-height: 300px;
+  overflow-y: auto;
+
+  background: white;
+  color: black;
+  border-radius: 16px;
+
+  z-index: 999;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  -webkit-overflow-scrolling: touch;
+}
+
+.artistResult {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 12px 16px;
+
+  text-decoration: none;
+  color: black;
+
+  transition: background 0.2s ease;
+}
+
+.artistResult:hover {
+  background: rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.artistResult img {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.artistInfo h4 {
+  margin: 0;
+  color: black;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.artistInfo p {
+  margin: 4px 0 0;
+  color: rgba(0,0,0,0.6);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}

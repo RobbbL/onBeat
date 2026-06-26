@@ -1,0 +1,71 @@
+<ion-content [fullscreen]="true">
+<div class="admin-page">
+
+    <h1>Pannello Amministratore</h1>
+
+    <div class="section">
+        <span class="section-title">Artisti</span>
+
+        <ion-button class="action-btn" [routerLink]="['/admin/form','artist','add']">
+            Aggiungi artista
+        </ion-button>
+
+        <ion-button class="action-btn" [routerLink]="['/admin/form','artist','edit']">
+            Modifica artista
+        </ion-button>
+
+        <ion-button class="action-btn delete" [routerLink]="['/admin/form','artist','delete']">
+            Elimina artista
+        </ion-button>
+    </div>
+
+    <div class="section">
+        <span class="section-title">Radio</span>
+
+        <ion-button class="action-btn" [routerLink]="['/admin/form','radio','add']">
+            Aggiungi radio
+        </ion-button>
+
+        <ion-button class="action-btn" [routerLink]="['/admin/form','radio','edit']">
+            Modifica radio
+        </ion-button>
+
+        <ion-button class="action-btn delete" [routerLink]="['/admin/form','radio','delete']">
+            Elimina radio
+        </ion-button>
+    </div>
+
+    <div class="section">
+        <span class="section-title">Merchandising</span>
+
+        <ion-button class="action-btn" [routerLink]="['/admin/form','merchandising','add']">
+            Aggiungi merchandising
+        </ion-button>
+
+        <ion-button class="action-btn" [routerLink]="['/admin/form','merchandising','edit']">
+            Modifica merchandising
+        </ion-button>
+
+        <ion-button class="action-btn delete" [routerLink]="['/admin/form','merchandising','delete']">
+            Elimina merchandising
+        </ion-button>
+    </div>
+
+    <div class="section">
+        <span class="section-title">Ticket</span>
+
+        <ion-button class="action-btn" [routerLink]="['/admin/form','ticket','add']">
+            Aggiungi ticket
+        </ion-button>
+
+        <ion-button class="action-btn" [routerLink]="['/admin/form','ticket','edit']">
+            Modifica ticket
+        </ion-button>
+
+        <ion-button class="action-btn delete" [routerLink]="['/admin/form','ticket','delete']">
+            Elimina ticket
+        </ion-button>
+    </div>
+
+</div>
+</ion-content>

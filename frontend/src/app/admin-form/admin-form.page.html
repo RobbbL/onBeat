@@ -1,0 +1,141 @@
+<ion-content [fullscreen]="true">
+  <div class="form-page">
+    <h1>{{ labels.action[action] }} {{ labels.type[type] }}</h1>
+
+    <div *ngIf="action === 'edit' && !selectedItemToEdit" class="form-card delete-card">
+      <div class="form-group search-flow-text">
+        <label>Seleziona quale {{ labels.type[type] }} desideri modificare</label>
+        <app-search-bar [searchType]="$any(type)" (selectItem)="onSelectEdit($event)"></app-search-bar>
+      </div>
+      <div class="form-group" style="margin-top: 10px;">
+        <ion-button class="cancel-btn search-flow-cancel" fill="outline" (click)="cancel()">
+          Annulla e torna indietro
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="form-card" *ngIf="action === 'add' || (action === 'edit' && selectedItemToEdit) || action === 'delete'"
+         [ngClass]="{ 'delete-card': action === 'delete' || (action === 'add' && (type === 'merchandising' || type === 'ticket') && !selectedArtistForAdd) }">
+
+      <ng-container *ngIf="action !== 'delete'; else deleteFlow">
+        
+        <div *ngIf="action === 'add' && (type === 'merchandising' || type === 'ticket') && !selectedArtistForAdd" class="form-group search-flow-text">
+          <label>Seleziona l'artista per cui creare il {{ labels.type[type] }}</label>
+          <app-search-bar searchType="artist" (selectItem)="onArtistSelectForAdd($event)"></app-search-bar>
+        </div>
+
+        <ng-container *ngIf="action === 'edit' || !(type === 'merchandising' || type === 'ticket') || selectedArtistForAdd">
+          
+          <div *ngIf="action === 'edit' && selectedItemToEdit" class="selected-artist-banner" style="background: rgb(58, 67, 94); color: white;">
+            Stai modificando: <b>{{ selectedItemToEdit.event_name || selectedItemToEdit.name }}</b>
+          </div>
+
+          <div *ngIf="action === 'add' && (type === 'merchandising' || type === 'ticket')" class="selected-artist-banner">
+            Artista selezionato: <b>{{ selectedArtistForAdd?.name }}</b>
+          </div>
+
+          <ng-container [ngSwitch]="type">
+
+            <div *ngSwitchCase="'artist'" class="form-group">
+              <input placeholder="Nome artista" [(ngModel)]="form.name">
+              <input placeholder="Genere musicale" [(ngModel)]="form.genre">
+              <input placeholder="Decennio" [(ngModel)]="form.decade">
+
+              <label>Immagine card (profilo)</label>
+              <input type="file" (change)="onFileSelected($event, 'image')">
+              <img *ngIf="getImageSource('image')"  [src]="getImageSource('image')"  class="preview">
+
+              <label>Immagine schermata (sfondo)</label>
+              <input type="file" (change)="onFileSelected($event, 'titleimg')">
+              <img *ngIf="getImageSource('titleimg')"  [src]="getImageSource('titleimg')"  class="preview">
+
+              <textarea placeholder="Descrizione" [(ngModel)]="form.description"></textarea>
+              <textarea placeholder="Biografia" [(ngModel)]="form.biography"></textarea>
+              <textarea placeholder="Premi e riconoscimenti" [(ngModel)]="form.awards"></textarea>
+              <textarea placeholder="Politica" [(ngModel)]="form.politica"></textarea>
+            </div>
+
+            <div *ngSwitchCase="'radio'" class="form-group">
+              <input placeholder="Nome radio" [(ngModel)]="form.name">
+              <input placeholder="Città di origine" [(ngModel)]="form.hometown">
+              <input placeholder="Decennio" [(ngModel)]="form.decade">
+
+              <label>Immagine card (profilo)</label>
+              <input type="file" (change)="onFileSelected($event, 'image')">
+              <img *ngIf="getImageSource('image')"  [src]="getImageSource('image')"  class="preview">
+
+              <label>Immagine schermata (sfondo)</label>
+              <input type="file" (change)="onFileSelected($event, 'titleimg')">
+              <img *ngIf="getImageSource('titleimg')"  [src]="getImageSource('titleimg')"  class="preview">
+
+              <textarea placeholder="Descrizione" [(ngModel)]="form.description"></textarea>
+              <textarea placeholder="Biografia" [(ngModel)]="form.biography"></textarea>
+              <textarea placeholder="Premi e riconoscimenti" [(ngModel)]="form.awards"></textarea>
+              <textarea placeholder="Politica" [(ngModel)]="form.politica"></textarea>
+            </div>
+
+            <div *ngSwitchCase="'merchandising'" class="form-group">
+              <input placeholder="Nome prodotto" [(ngModel)]="form.name">
+              <input placeholder="Prezzo (€)" type="number" [(ngModel)]="form.price">
+              <input placeholder="Stock (quantità)" type="number" [(ngModel)]="form.stock">
+
+              <label>Immagine prodotto</label>
+              <input type="file" (change)="onFileSelected($event, 'image')">
+              <img *ngIf="getImageSource('image')"  [src]="getImageSource('image')"  class="preview">
+
+              <textarea placeholder="Descrizione prodotto" [(ngModel)]="form.description"></textarea>
+            </div>
+
+            <div *ngSwitchCase="'ticket'" class="form-group">
+              <input placeholder="Nome evento" [(ngModel)]="form.event_name">
+              <input placeholder="Luogo evento" [(ngModel)]="form.place">
+              <input placeholder="Prezzo (€)" type="number" [(ngModel)]="form.price">
+              <input placeholder="Data evento" type="date" [(ngModel)]="form.date">
+              <input placeholder="Tipo biglietto" [(ngModel)]="form.type">
+            </div>
+
+          </ng-container>
+          
+          <div *ngIf="errorMessage" class="global-error-text">
+            {{ errorMessage }}
+          </div>
+
+          <div class="form-group" style="margin-top: 10px;">
+            <ion-button class="submit-btn" (click)="submit()">
+              Salva Modifiche
+            </ion-button>
+            <ion-button class="cancel-btn" fill="outline" (click)="cancel()">
+              Annulla
+            </ion-button>
+          </div>
+
+        </ng-container>
+
+        <div *ngIf="action === 'add' && (type === 'merchandising' || type === 'ticket') && !selectedArtistForAdd" class="form-group" style="margin-top: 10px;">
+          <ion-button class="cancel-btn search-flow-cancel" fill="outline" (click)="cancel()">
+            Annulla
+          </ion-button>
+        </div>
+
+      </ng-container>
+
+      <ng-template #deleteFlow>
+        <ng-container *ngIf="!form?.id && !form?.ID">
+          <app-search-bar [searchType]="$any(type)" (selectItem)="onSelectDelete($event)"></app-search-bar>
+          <div class="form-group" style="margin-top: 10px;">
+            <ion-button class="cancel-btn search-flow-cancel" fill="outline" (click)="cancel()">
+              Annulla e torna indietro
+            </ion-button>
+          </div>
+        </ng-container>
+        <div *ngIf="form?.id || form?.ID" class="form-group delete-confirm-text">
+          <p>Sei sicuro di voler eliminare <b>{{ form.event_name || form.name }}</b>?</p>
+          <small>Quest'azione sarà irreversibile.</small>
+          <ion-button class="submit-btn" (click)="submit()">Sì, elimina</ion-button>
+          <ion-button class="cancel-btn" fill="outline" (click)="cancel()">No, annulla</ion-button>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</ion-content>

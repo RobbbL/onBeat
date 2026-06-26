@@ -1,0 +1,22 @@
+<div id="map" style="height: 400px; width: 100%;"></div>
+
+<ng-template #mapPopupTemplate let-tickets="tickets">
+  <div class="map-popup-container" style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
+    <div class="map-popup-card" *ngFor="let ticket of tickets" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+      <div class="map-popup-header">
+        <span class="map-popup-badge">{{ ticket.type }}</span>
+        <strong class="map-popup-title" style="display: block; margin-top: 5px;">{{ ticket.event_name }}</strong>
+      </div>
+      <div class="map-popup-body" style="margin: 5px 0;">
+        <p style="margin: 2px 0;">📍 <b>Luogo:</b> {{ ticket.place }}</p>
+        <p style="margin: 2px 0;">📅 <b>Data:</b> {{ formatDate(ticket.date) }}</p>
+      </div>
+      <div class="map-popup-footer" style="display: flex; justify-content: space-between; align-items: center;">
+        <span class="map-popup-price"><b>{{ ticket.price }} €</b></span>
+        <button class="map-popup-btn" (click)="triggerBuyTicket(ticket)">
+          Acquista
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

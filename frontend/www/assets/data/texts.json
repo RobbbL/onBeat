@@ -1,0 +1,73 @@
+[
+    {
+        "year": "60",
+        "description": "The rise of rock and roll, youth counterculture, and pop culture",
+        "history": [
+            "Gli anni 60 iniziano come un'epoca di grande cambiamento sociale e culturale,",
+            "dove la musica diventa voce della gioventù e della protesta politica.",
+            "I Beatles rivoluzionano il pop mondiale, trasformando la musica in fenomeno globale.",
+            "Bob Dylan porta testi impegnati e denuncia sociale nelle canzoni folk-rock.",
+            "Negli Stati Uniti cresce il movimento per i diritti civili e la pace.",
+            "Elvis Presley continua a influenzare la cultura giovanile con il rock'n'roll.",
+            "Le proteste contro la guerra in Vietnam definiscono una generazione intera in lotta.",
+            "Gli anni 60 diventano simbolo di libertà, sperimentazione e profondo cambiamento del mondo."
+        ],
+        "titleimg": "assets/anni60_title.png"
+    },
+    {
+        "year": "70",
+        "description": "Disco music, stadium rock and psychedelic evolution of sound",
+        "history": [
+            "Gli anni 70 si aprono con profondi cambiamenti politici e sociali in tutto il mondo,",
+            "tra crisi economiche, nuove ideologie e movimenti di emancipazione.",
+            "Il rock si evolve con nuove sonorità più complesse e sperimentali.",
+            "I Led Zeppelin e i Pink Floyd ridefiniscono la musica rock e progressiva.",
+            "Nasce una forte cultura alternativa legata a pace, ecologia e diritti civili.",
+            "Il cinema diventa più realistico e critico verso la società contemporanea.",
+            "Gli anni 70 si chiudono con una forte identità culturale e musicale globale."
+        ],
+        "titleimg": "assets/anni70_title.png"
+    },
+    {
+        "year": "80",
+        "description": "Synth-pop, MTV explosion and global pop domination",
+        "history": [
+            "Gli anni 80 si caratterizzano per l'esplosione della cultura pop e dell'estetica digitale iniziale,",
+            "la televisione e i videoclip musicali diventano strumenti centrali di comunicazione.",
+            "Michael Jackson e Madonna dominano la scena musicale mondiale.",
+            "Sintetizzatori e musica elettronica definiscono il suono di un'intera generazione.",
+            "Il consumismo e la cultura dell'immagine crescono rapidamente nelle società occidentali.",
+            "Il cinema blockbuster conquista le sale con effetti speciali sempre più avanzati.",
+            "Gli anni 80 diventano simbolo di eccesso, innovazione e cultura globale mainstream."
+        ],
+        "titleimg": "assets/anni80_title.jpeg"
+    },
+    {
+        "year": "90",
+        "description": "Grunge, hip-hop boom and alternative music revolution",
+        "history": [
+            "Gli anni 90 segnano l'affermazione della globalizzazione e dell'era digitale nascente,",
+            "Internet inizia a trasformare comunicazione, lavoro e informazione.",
+            "Il grunge e il rap diventano le nuove voci della ribellione giovanile.",
+            "Nirvana e Tupac Shakur rappresentano due icone musicali della decade.",
+            "La cultura pop si diversifica tra TV, videogiochi e nuove forme mediatiche.",
+            "Il cinema indipendente cresce accanto alle grandi produzioni hollywoodiane.",
+            "Gli anni 90 diventano un ponte tra il mondo analogico e quello digitale."
+        ],
+        "titleimg": "assets/anni90_title.jpeg"
+    },
+    {
+        "year": "00",
+        "description": "Digital pop culture, globalized music industry, and the rise of streaming",
+        "history": [
+            "Gli anni 2000 si aprono con la diffusione massiva di Internet e dei social network iniziali,",
+            "la comunicazione digitale diventa parte integrante della vita quotidiana.",
+            "L'hip hop e il pop elettronico dominano le classifiche musicali globali.",
+            "L'iPod e i primi smartphone cambiano il modo di ascoltare e condividere musica.",
+            "Il cinema si evolve con la CGI e franchise cinematografici sempre più complessi.",
+            "L'11 settembre segna profondamente la politica e la cultura globale.",
+            "Gli anni 2000 rappresentano l'inizio dell'era completamente connessa e digitale."
+        ],
+        "titleimg": "assets/anni2000_title.jpeg"
+    }
+]

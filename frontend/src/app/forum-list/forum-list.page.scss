@@ -1,0 +1,41 @@
+.forum-list-container {
+  background: #E8E9F3;
+  padding: 2rem;
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.decade-card {
+  background: white;
+  width: 100%;
+  max-width: 750px;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(58, 67, 94, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(97, 50, 86, 0.12);
+    
+    .decade-arrow { color: rgb(97, 50, 86); transform: translateX(4px); }
+  }
+
+  .decade-info {
+    h2 { margin: 0 0 6px 0; color: rgb(58, 67, 94); font-weight: 700; font-size: 1.4rem; }
+    p { margin: 0; color: rgb(141, 129, 150); font-size: 0.95rem; }
+  }
+
+  .decade-arrow {
+    font-size: 1.3rem;
+    color: rgb(58, 67, 94);
+    transition: all 0.2s ease;
+  }
+}

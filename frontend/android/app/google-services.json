@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "698618257072",
+    "project_id": "onbeat-f02b7",
+    "storage_bucket": "onbeat-f02b7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698618257072:android:b30f765a9752c8d804e575",
+        "android_client_info": {
+          "package_name": "com.onbeat.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvf20e4N_5wr4p2WT95Qdu7xlwEUxjYQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

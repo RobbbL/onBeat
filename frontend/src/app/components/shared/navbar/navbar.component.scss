@@ -1,0 +1,166 @@
+.navbar {
+  width: 90%;
+  max-width: 800px;
+  height: clamp(50px, 7vh, 70px);
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+  z-index: 100;
+}
+
+.elements {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 90%;
+}
+
+.elements li {
+  flex: 1;
+}
+
+.elements a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  height: 100%;
+
+  color: black;
+  text-decoration: none;
+  font-size: clamp(12px, 2vw, 16px);
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.elements a:hover {
+  color: #555555;
+}
+
+.elements a:not(.cart)::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 20%;
+  background-color: #000000;
+  transition: width 0.3s ease;
+}
+
+.elements a:not(.cart):hover::after{
+  width: 40%;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  min-width: 18px;
+  height: 18px;
+
+  background: red;
+  color: white;
+
+  font-size: 10px;
+  font-weight: bold;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elements button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.elements button img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+
+  transform: scale(1.20);
+}
+
+.elements button.profile img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+
+  border-radius: 50%;
+  border: 2px solid white;
+
+  transform: none;
+}
+
+.elements button:hover {
+  transform: scale(1.10);
+}
+
+@media (max-width: 600px) {
+  .artisti_list{
+    height: 40vh;
+  }
+
+  .navbar {
+    width: 95%;
+    border-radius: 30px;
+    top: 15px;
+  }
+  
+  .elements {
+    width: 100%;
+  }
+  
+  .elements a {
+    letter-spacing: 0px;
+    font-size: 13px;
+  }
+
+  .elements a:hover::after {
+    width: 50%;
+  }
+
+  .spacer{
+    display: none;
+  }
+}

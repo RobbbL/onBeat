@@ -1,0 +1,177 @@
+<ion-content [fullscreen]="true">
+  <div class="checkout-layout">
+    
+    <div class="step-content card error-state" *ngIf="currentStep === 0">
+      <div class="error-icon-circle">⚠️</div>
+      <h2>Impossibile procedere</h2>
+      <p *ngIf="errorMessage">{{ errorMessage }}</p>
+    </div>
+
+    <div *ngIf="currentStep > 0">
+      
+      <div class="checkout-container" *ngIf="currentStep <= 3">
+        <h1 class="checkout-title">Checkout</h1>
+        
+        <div class="steps">
+          <div class="step" [class.active]="currentStep >= 1">
+            <div class="step-circle">1</div>
+            <span>Spedizione</span>
+          </div>
+          <div class="step-line" [class.active]="currentStep >= 2"></div>
+          <div class="step" [class.active]="currentStep >= 2">
+            <div class="step-circle">2</div>
+            <span>Pagamento</span>
+          </div>
+          <div class="step-line" [class.active]="currentStep >= 3"></div>
+          <div class="step" [class.active]="currentStep >= 3">
+            <div class="step-circle">3</div>
+            <span>Riepilogo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-content card" *ngIf="currentStep === 1">
+        <h2>Dati di spedizione</h2>
+        
+        <div class="form-grid">
+          <div class="input-group">
+            <label>Nome</label>
+            <input [(ngModel)]="shippingData.nome" placeholder="Nome">
+          </div>
+          <div class="input-group">
+            <label>Cognome</label>
+            <input [(ngModel)]="shippingData.cognome" placeholder="Cognome">
+          </div>
+          <div class="input-group">
+            <label>Username</label>
+            <input [(ngModel)]="shippingData.username" placeholder="Username">
+          </div>
+          <div class="input-group">
+            <label>Email</label>
+            <input [(ngModel)]="shippingData.email" placeholder="Email">
+          </div>
+          <div class="input-group">
+            <label>Paese</label>
+            <input [(ngModel)]="shippingData.paese" placeholder="Paese">
+          </div>
+          <div class="input-group">
+            <label>Provincia</label>
+            <input [(ngModel)]="shippingData.provincia" placeholder="Provincia">
+          </div>
+          <div class="input-group">
+            <label>Città</label>
+            <input [(ngModel)]="shippingData.citta" placeholder="Città">
+          </div>
+          <div class="input-group">
+            <label>CAP</label>
+            <input [(ngModel)]="shippingData.cap" placeholder="CAP" maxlength="5">
+          </div>
+          <div class="input-group">
+            <label>Via</label>
+            <input [(ngModel)]="shippingData.via" placeholder="Via">
+          </div>
+          <div class="input-group">
+            <label>Numero Civico</label>
+            <input [(ngModel)]="shippingData.civico" placeholder="Civico">
+          </div>
+          <div class="input-group full-width">
+            <label>Telefono</label>
+            <input [(ngModel)]="shippingData.telefono" placeholder="Telefono">
+          </div>
+          
+          <div class="error-banner full-width" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+
+          <div class="navigation-buttons full-width">
+            <button class="btn-primary" (click)="validateAndNextStep1()">Successivo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-content card" *ngIf="currentStep === 2">
+        <h2>Metodo di pagamento</h2>
+        
+        <div class="form-grid">
+          <div class="input-group full-width">
+            <label>Intestatario Carta</label>
+            <input [(ngModel)]="paymentData.intestatario" placeholder="Nome e Cognome intestatario">
+          </div>
+          <div class="input-group full-width">
+            <label>Numero Carta</label>
+            <input [(ngModel)]="paymentData.numeroCarta" placeholder="0000 0000 0000 0000" maxlength="16">
+          </div>
+          <div class="input-group">
+            <label>Scadenza</label>
+            <input [(ngModel)]="paymentData.scadenza" placeholder="MM/AA" maxlength="5">
+          </div>
+          <div class="input-group">
+            <label>CVV</label>
+            <input [(ngModel)]="paymentData.cvv" placeholder="000" maxlength="3">
+          </div>
+          
+          <div class="error-banner full-width" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+
+          <div class="navigation-buttons full-width">
+            <button class="btn-secondary" (click)="previousStep()">Indietro</button>
+            <button class="btn-primary" (click)="validateAndNextStep2()">Successivo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-content card" *ngIf="currentStep === 3">
+        <h2>Riepilogo ordine</h2>
+
+        <div class="summary-section">
+          <h3>Indirizzo di Spedizione</h3>
+          <p><strong>{{ shippingData.nome }} {{ shippingData.cognome }} ({{ shippingData.username }})</strong></p>
+          <p>Email: {{ shippingData.email }}</p>
+          <p>{{ shippingData.via }}, {{ shippingData.civico }}</p>
+          <p>{{ shippingData.cap }} {{ shippingData.citta }} ({{ shippingData.provincia }}) - {{ shippingData.paese }}</p>
+          <p>Tel: {{ shippingData.telefono }}</p>
+        </div>
+
+        <div class="summary-section">
+          <h3>Dati di Pagamento</h3>
+          <p>Carta intestata a: {{ paymentData.intestatario }}</p>
+          <p>Numero: **** **** **** {{ paymentData.numeroCarta.slice(-4) }}</p>
+        </div>
+
+        <div class="summary-section">
+          <h3>Prodotti ordinati</h3>
+          <div class="summary-item" *ngFor="let item of cartItems">
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-price">{{ item.price | number:'1.2-2' }} €</span>
+          </div>
+          <div class="summary-total">
+            <span>Totale complessivo</span>
+            <span class="total-amount">{{ calculateTotal() | number:'1.2-2' }} €</span>
+          </div>
+        </div>
+
+        <div class="error-banner" *ngIf="errorMessage" style="margin-bottom: 15px;">
+          {{ errorMessage }}
+        </div>
+
+        <div class="navigation-buttons">
+          <button class="btn-secondary" (click)="previousStep()">Indietro</button>
+          <button class="btn-success" (click)="confirmOrder()">Conferma e acquista</button>
+        </div>
+      </div>
+
+      <div class="success-screen card animated-success" *ngIf="currentStep === 4">
+        <div class="success-icon-circle">
+          <svg viewBox="0 0 24 24" class="checkmark">
+            <path fill="none" stroke="#48bb78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h2>Ordine effettuato!</h2>
+        <p>Il tuo ordine è stato effettuato con successo e riceverai a breve una mail di conferma.</p>
+        <button class="btn-primary" (click)="goHome()">Torna alla Home</button>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

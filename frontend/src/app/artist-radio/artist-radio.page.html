@@ -1,0 +1,65 @@
+<ion-content fullscreen [scrollEvents]="true">
+    <app-title-screen
+        [title]="artist_radio?.name || ''"
+        [subtitle]="artist_radio?.description || ''"
+        [imgBg]="artist_radio?.titleimg || ''">
+    </app-title-screen>
+        
+    <div class="action-bar" *ngIf="currentType === 'artist'">
+        <ion-button class="like-btn" [class.is-liked]="isLiked" (click)="toggleLike()">
+            <ion-icon [name]="isLiked ? 'heart' : 'heart-outline'"></ion-icon>
+            <span>{{ isLiked ? 'Ti piace' : 'Metti Like' }}</span>
+        </ion-button>
+    </div>
+
+    <div class="main-container">
+        <nav class="artist-nav">
+            <a (click)="scrollTo('biografia')">Biografia</a>
+            <a (click)="scrollTo('politica')">Politica</a>
+            <a (click)="scrollTo('riconoscimenti')">Riconoscimenti</a>
+            <a *ngIf="currentType === 'artist'" (click)="scrollTo('merch')">Merch</a>
+        </nav>
+
+        <div class="page-content">
+            <section id="biografia">
+                <h2>Biografia</h2>
+                <div class="content-card">
+                    <p>{{artist_radio?.biography}}</p>
+                </div>
+            </section>
+
+            <section id="politica">
+                <h2>Impegno Politico</h2>
+                <div class="content-card">
+                    <p>{{artist_radio?.politica}}</p>
+                </div>
+            </section>
+
+            <section id="riconoscimenti">
+                <h2>Riconoscimenti</h2>
+                <div class="content-card">
+                    <p [innerHTML]="(artist_radio?.awards ?? '').split('.').join('.<br>')"></p>
+                </div>
+            </section>
+
+            <section *ngIf="currentType === 'artist'" id="merch">
+                <h2>Merch</h2>
+                <div class="prodotti-grid">
+                    <a *ngFor="let product of products" class="linkaprodotti" [routerLink]="['/products', product?.id]">
+                        <div class="product-card">
+                            <div class="prod-img-box">
+                                <img [src]="product.image" [alt]="product.name" class="prodotto">
+                            </div>
+                            <div class="product-info">
+                                <span class="price">{{ product.price }}€</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <a [routerLink]="['/merchShop', artist_radio?.id]" class="bottone-shop">
+                    Scopri tutti i prodotti
+                </a>
+            </section>
+        </div>
+    </div>
+</ion-content>

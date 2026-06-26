@@ -1,0 +1,31 @@
+<nav class="navbar">
+    <ul class="elements">
+        <li> 
+            <button routerLink="/home">
+                <img style="transform:scale(1.30)" src="assets/home.png">
+            </button>
+        </li>
+        <li class="spacer"></li>
+        <li><a routerLink="/decade/60">60s</a></li>
+        <li><a routerLink="/decade/70">70s</a></li>
+        <li><a routerLink="/decade/80">80s</a></li>
+        <li><a routerLink="/decade/90">90s</a></li>
+        <li><a routerLink="/decade/00">00s</a></li>
+        <li class="spacer"></li>
+
+        <li> 
+            <button (click)="openCart()">
+             <img src="assets/carrello.png">
+                <span class="badge">
+                    {{ cartCount$ | async }}
+                </span>
+            </button>
+        </li>
+
+        <li>
+            <button class="profile" (click)="handleAuthClick()">
+                <img [src]="profileImageUrl" alt="Profile image">
+            </button>
+        </li>
+    </ul>
+</nav>

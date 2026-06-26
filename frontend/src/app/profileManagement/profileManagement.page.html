@@ -1,0 +1,125 @@
+<ion-content fullscreen>
+
+  <div class="editHeader">
+
+    <div class="headerTop">
+      <ion-button fill="clear" (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+
+      <h2>Modifica Profilo</h2>
+
+      <ion-button fill="clear" (click)="save()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="avatarSection">
+      <div class="avatarWrapper">
+        <img [src]="profileImageUrl" alt="profile">
+        <div
+          class="editBadge"
+          *ngIf="isDefaultProfileImage"
+          (click)="selectOrCaptureImage()"
+        >
+          <span class="plus">+</span>
+        </div>
+        <div
+          class="deleteBadge"
+          *ngIf="!isDefaultProfileImage"
+          (click)="removeProfileImage();"
+        >
+          <img src="assets/trash.png" alt="Delete">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="editContent">
+
+    <div class="formCard">
+
+      <div class="inputGroup">
+        <label>Nome</label>
+        <ion-input [(ngModel)]="form.firstName" name="firstName"></ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Cognome</label>
+        <ion-input [(ngModel)]="form.lastName" name="lastName"></ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Username</label>
+        <ion-input [(ngModel)]="form.username" name="username"></ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Email</label>
+        <ion-input [(ngModel)]="form.email" name="email" type="email"></ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Telefono</label>
+        <ion-input [(ngModel)]="form.phone" name="phone"></ion-input>
+      </div>
+
+    </div>
+
+    <div class="formCard">
+
+      <div class="inputGroup">
+        <label>Paese</label>
+        <ion-input [(ngModel)]="form.shippingAddress.country" name="country"></ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Provincia</label>
+        <ion-input [(ngModel)]="form.shippingAddress.provinceCode" name="provinceCode"></ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Città</label>
+        <ion-input [(ngModel)]="form.shippingAddress.city" name="city"></ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>CAP</label>
+        <ion-input [(ngModel)]="form.shippingAddress.zipcode" name="zipcode"></ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Via</label>
+        <ion-input [(ngModel)]="form.shippingAddress.street" name="street"></ion-input>
+      </div>
+
+      <div class="inputGroup">
+        <label>Numero Civico</label>
+        <ion-input [(ngModel)]="form.shippingAddress.streetNumber" name="streetNumber"></ion-input>
+      </div>
+
+    </div>
+
+    <div class="error-container" *ngIf="errorMessage">
+      <p class="error-text">{{ errorMessage }}</p>
+    </div>
+
+    <div class="actions">
+
+      <ion-button (click)="save()" expand="block" class="saveBtn">
+        Salva modifiche
+      </ion-button>
+
+      <ion-button (click)="openDeletePopover($event)" expand="block" class="deleteAccountBtn">
+        Elimina account
+      </ion-button>
+
+      <ion-button (click)="back()" expand="block" fill="outline" class="cancelBtn">
+        Annulla
+      </ion-button>
+
+    </div>
+
+  </div>
+
+</ion-content>

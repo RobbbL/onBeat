@@ -1,0 +1,30 @@
+ion-fab-button{
+    --background: white;
+}
+
+ion-fab-button .img {
+    width: 80%;
+}
+
+ion-fab {
+    right: 30px;
+    position: fixed;
+}
+
+ion-fab.ticket {
+    bottom: 10px;
+}
+
+ion-fab.forum {
+    bottom: 80px;
+}
+
+ion-fab.adminPanel {
+    bottom: 150px;
+}
+
+@media (max-width: 475px){
+    ion-fab {
+        right: 10px;
+    }
+}

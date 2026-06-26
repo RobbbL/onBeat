@@ -1,0 +1,184 @@
+.form-page {
+  min-height: 100vh;
+
+  padding-top: calc(85px + env(safe-area-inset-top));
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 3rem;
+
+  background: rgb(232, 233, 243);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  font-size: 1.8rem;
+  font-weight: 700;
+
+  color: rgb(58, 67, 94);
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: gray;
+}
+
+.form-card {
+  max-width: 600px;
+  margin: 0 auto;
+
+  background: white;
+
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(58, 67, 94, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.selected-artist-banner {
+  background: rgb(240, 235, 243);
+  color: rgb(97, 50, 86);
+  padding: 10px 14px;
+  border-radius: 12px;
+  border-left: 4px solid rgb(97, 50, 86);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.global-error-text {
+  color: red;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 10px 0;
+  display: block;
+}
+
+.delete-card {
+  background: #7f597c;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(58, 67, 94, 0.25);
+}
+
+.delete-card p {
+  color: white;
+  text-align: center;
+}
+
+.search-flow-text label {
+  color: white;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.delete-confirm-text {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.delete-confirm-text p {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.delete-confirm-text small {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px 14px;
+
+  border-radius: 12px;
+  border: 1px solid rgb(141, 129, 150);
+  outline: none;
+
+  font-size: 0.95rem;
+  color: rgb(58, 67, 94);
+  transition: 0.2s ease;
+}
+
+.preview {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 12px;
+  margin: 10px 0 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  object-fit: cover;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+input:focus, textarea:focus {
+  border-color: rgb(97, 50, 86);
+}
+
+.submit-btn {
+  margin-top: 10px;
+  --background: rgb(97, 50, 86);
+  --color: white;
+
+  --border-radius: 14px;
+
+  font-weight: 600;
+  height: 48px;
+  text-transform: none;
+
+  transition: 0.2s ease;
+}
+
+.submit-btn:hover {
+  --background: rgb(119, 90, 118);
+}
+
+.cancel-btn {
+  margin-top: 10px;
+
+  --background: transparent;
+  --color: rgb(58, 67, 94);
+  --border-color: rgb(58, 67, 94);
+
+  --border-radius: 14px;
+
+  font-weight: 600;
+  height: 48px;
+
+  text-transform: none;
+  transition: 0.2s ease;
+}
+
+.cancel-btn:hover {
+  --background: rgb(58, 67, 94);
+  --color: white;
+}
+
+.search-flow-cancel {
+  --color: white !important;
+  --border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.search-flow-cancel:hover {
+  --background: rgba(255, 255, 255, 0.1) !important;
+  --color: white !important;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "onBeat_CODICI",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

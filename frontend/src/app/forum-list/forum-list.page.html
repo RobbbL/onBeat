@@ -1,0 +1,17 @@
+<ion-content [fullscreen]="true">
+
+  <app-title-space 
+      title = "Community Forum"
+      subtitle = "Seleziona un'era musicale ed entra nella discussione">
+  </app-title-space>
+
+  <div class="forum-list-container">
+    <div class="decade-card" *ngFor="let decade of decades" (click)="goToForum(decade.id)">
+      <div class="decade-info">
+        <h2>{{ decade.name }}</h2>
+        <p>{{ decade.description }}</p>
+      </div>
+      <div class="decade-arrow">➔</div>
+    </div>
+  </div>
+</ion-content>

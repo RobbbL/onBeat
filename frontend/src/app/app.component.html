@@ -1,0 +1,12 @@
+<ion-app>
+  <app-navbar *ngIf="showNavbar"></app-navbar>>
+
+  <ion-router-outlet></ion-router-outlet>
+
+  <app-cart></app-cart>
+
+  <div *ngIf="cartNotification$ | async as msg" class="toast-animation">
+    {{ msg }}
+  </div>
+
+</ion-app>

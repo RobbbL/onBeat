@@ -1,0 +1,49 @@
+<div class="cart-popover" *ngIf="isOpen">
+  <div class="arrow"></div>
+  
+  <div class="cart-header">
+    <h3>Carrello</h3>
+    <button class="close-btn" (click)="closeCart()">
+      ✕
+    </button>
+  </div>
+
+  <div class="cart-content">
+    <div class="empty-cart" *ngIf="items.length === 0">
+      <ion-icon name="cart-outline"></ion-icon>
+      <p>Il tuo carrello è vuoto</p>
+    </div>
+
+    <div class="cart-item" *ngFor="let item of items">
+      <div class="item-main-info">
+        <div class="item-img-container">
+          <img [src]="!item.image ? 'assets/ticket.png' : item.image" [alt]="item.name" class="item-img">
+        </div>
+        
+        <div class="item-details">
+          <h4 class="item-name">{{ item.name }}</h4>
+          <p class="item-price">{{ item.price | number:'1.2-2' }} €</p>
+        </div>
+      </div>
+
+      <button class="remove-btn" (click)="removeItem(item)">
+        🗑️
+      </button>
+    </div>
+  </div>
+
+  <div class="cart-footer" *ngIf="items.length > 0 || errorMessage">
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <div class="total-row" *ngIf="items.length > 0">
+      <span>Totale</span>
+      <span class="total-price">{{ calculateTotal() | number:'1.2-2' }} €</span>
+    </div>
+    
+    <ion-button *ngIf="items.length > 0" (click)="checkout()" class="pay-btn" expand="block">
+      Procedi al pagamento
+    </ion-button>
+  </div>
+</div>

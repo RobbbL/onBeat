@@ -1,0 +1,9 @@
+<ion-content class="ion-padding ion-text-center">
+  <div *ngIf="userData" class="profile-popover-container">
+    <div class="popover-avatar-wrapper">
+      <img [src]="getAvatarUrl()" alt="Avatar" class="popover-avatar" />
+    </div>
+    <h3 class="user-fullname">{{ userData.firstName }} {{ userData.lastName }}</h3>
+    <p class="user-username">&#64;{{ userData.username }}</p>
+  </div>
+</ion-content>

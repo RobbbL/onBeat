@@ -1,0 +1,114 @@
+<ion-content fullscreen>
+
+  <div class="profileHeader">
+
+    <div class="headerTop">
+      <ion-button fill="clear">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="profileImage">
+      <img [src]="profileImageUrl" alt="Profile image">
+    </div>
+
+    <h1>{{ (user$ | async)?.username }} </h1>
+    <p>{{ (user$ | async)?.firstName }} {{ (user$ | async)?.lastName }}</p>
+
+  </div>
+
+  <div class="profileContent">
+
+    <div class="infoCard">
+
+      <div class="cardTitle">
+        <ion-icon name="person-outline"></ion-icon>
+        <span>Informazioni Personali</span>
+      </div>
+
+      <div class="infoRow">
+        <label>Nome</label>
+        <h3>{{ (user$ | async)?.firstName }}</h3>
+      </div>
+
+      <div class="infoRow">
+        <label>Cognome</label>
+        <h3>{{ (user$ | async)?.lastName }}</h3>
+      </div>
+
+      <div class="infoRow">
+        <label>Username</label>
+        <h3>{{ (user$ | async)?.username }}</h3>
+      </div>
+
+      <div class="infoRow">
+        <label>Email</label>
+        <h3>{{ (user$ | async)?.email }}</h3>
+      </div>
+
+      <div class="infoRow">
+        <label>Telefono</label>
+        <h3>{{ (user$ | async)?.phone }}</h3>
+      </div>
+
+    </div>
+
+    <div class="infoCard">
+
+      <div class="cardTitle">
+        <ion-icon name="location-outline"></ion-icon>
+        <span>Indirizzo di Consegna</span>
+      </div>
+
+      <div class="infoRow">
+        <label>Paese</label>
+        <h3>{{ (user$ | async)?.shippingAddress?.country }}</h3>
+      </div>
+
+      <div class="infoRow">
+        <label>Provincia</label>
+        <h3>{{ (user$ | async)?.shippingAddress?.provinceCode }}</h3>
+      </div>
+
+      <div class="infoRow">
+        <label>Città</label>
+        <h3>{{ (user$ | async)?.shippingAddress?.city }}</h3>
+      </div>
+
+      <div class="infoRow">
+        <label>CAP</label>
+        <h3>{{ (user$ | async)?.shippingAddress?.zipcode }}</h3>
+      </div>
+
+      <div class="infoRow">
+        <label>Via / Piazza</label>
+        <h3>{{ (user$ | async)?.shippingAddress?.street }}</h3>
+      </div>
+
+      <div class="infoRow">
+        <label>Numero Civico</label>
+        <h3>{{ (user$ | async)?.shippingAddress?.streetNumber }}</h3>
+      </div>
+
+    </div>
+
+    <div class="actions">
+
+      <ion-button (click)="openOrdersPopover()" expand="block" class="ordersBTN">
+        <ion-icon name="bag-handle-outline" slot="start"></ion-icon>
+        Visualizza i tuoi ordini
+      </ion-button>
+
+      <ion-button (click)="goToProfileManagement()" expand="block" class="managementBTN">
+        Modifica Profilo
+      </ion-button>
+
+      <ion-button (click)="logout()" expand="block" fill="outline" class="logoutBTN">
+        Logout
+      </ion-button>
+
+    </div>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,135 @@
+<ion-content fullscreen>
+    
+    <app-floatingBall
+        *ngIf="isAdmin()"
+        type="adminPanel"
+        image="assets/adminPanel.png"
+        alt="adminPanel"
+        route="/admin-panel">
+    </app-floatingBall>
+    
+    <app-floatingBall
+        type="ticket"
+        image="assets/ticket.png"
+        alt="ticket"
+        route="/ticket">
+    </app-floatingBall>
+
+    <app-floatingBall
+        type="forum"
+        image="assets/forum.png"
+        alt="forum"
+        route="/forum">
+    </app-floatingBall>
+
+    <div class="center">
+        <video #bgVideo class="bgCenter" autoplay muted loop playsinline preload="auto" webkit-playsinline>
+            <source src="assets/sfondo_centro_home.webm" type="video/webm">
+            <source src="assets/sfondo_centro_home.mp4" type="video/mp4">
+        </video>
+        <h1 class="title"> <strong>on</strong>Beat </h1>
+
+        <app-search-bar searchType="artist" (selectItem)="goToArtist($event)"> </app-search-bar>
+
+        <div class="wave" style="--bg: rgb(255, 255, 255);">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="artistiWrapper">
+        <div class="artistiTrack">
+            <ng-container *ngFor="let artist of topArtists; let i = index">
+                <a class="artistiCard" [routerLink]="['/artist', artist?.id]">
+                    <div class="imgWrap">
+                        <img [src]="artist?.image" [alt]="artist?.name">
+                        <span class="artistName">{{ artist?.name }}</span>
+                    </div>
+                </a>
+            </ng-container>
+        </div>
+    </div>
+    <div class="decade" id="60s" style="--bg: rgba(97, 50, 86);">
+        <div class="decade_content">
+            <h3 class="decade_title" style="color: cornsilk;">Anni '60</h3>
+            <p>
+                Un decennio che ha cambiato il mondo. 
+                Tra rivoluzioni culturali, diritti civili e una musica che ancora oggi fa storia, 
+                questi anni raccontano il desiderio di libertà e di esprimersi senza limiti. 
+                È l'era in cui i giovani rivendicano l'antiautoritarismo, 
+                la liberazione sessuale e la nascita della controcultura hippy.
+            </p>
+            <img src="assets/anni60.jpeg" loading="lazy" alt="Anni '60">
+            <ion-button routerLink="/decade/60" aria-label="Scopri gli anni '60">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>
+        </div>    
+    </div>
+    <div class="decade" id="70s" style="--bg: rgba(119, 90, 118);">
+        <div class="decade_content">
+            <h3 class="decade_title" style="color: cornsilk;">Anni '70</h3>
+            <p>
+                Un periodo fatto di energia, sperimentazione e identità. 
+                Le mobilitazioni si fanno più radicali, strutturate e spietate; 
+                la rabbia giovanile si trasforma nella nichilista e violenta rivolta del punk.
+                Dalle luci della disco music alle nuove forme di espressione artistica, 
+                è il decennio in cui stile e personalità diventano protagonisti. 
+            </p>
+            <img src="assets/anni70.jpeg" loading="lazy" alt="Anni '70">
+            <ion-button routerLink="/decade/70" aria-label="Scopri gli anni '70">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>
+        </div>  
+    </div>
+    <div class="decade" id="80s" style="--bg: rgba(141, 129, 150);">
+        <div class="decade_content">
+            <h3 class="decade_title" style="color: cornsilk;">Anni '80</h3>
+            <p>
+                Colore, innovazione e grandi icone. 
+                Con l'avvento del consumismo sfrenato e dell'individualismo, 
+                i movimenti sociali cambiano pelle e si internazionalizzano.
+                Grandi eventi benefici come il Live Aid uniscono la musica alla solidarietà globale, 
+                mentre le piazze si mobilitano con forza contro l'apartheid in Sudafrica, 
+                per i diritti dei malati di AIDS e a difesa dell'ambiente, 
+                dando vita ai primi partiti Verdi. 
+            </p>
+            <img src="assets/anni80.jpeg" loading="lazy" alt="Anni '80">
+            <ion-button routerLink="/decade/80" aria-label="Scopri gli anni '80">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button> 
+        </div>
+    </div>
+    <div class="decade" id="90s" style="--bg: rgba(131, 143, 166);">
+        <div class="decade_content">
+            <h3 class="decade_title" style="color: cornsilk;">Anni '90</h3>
+            <p>
+                Un ritorno all'autenticità e alla semplicità. 
+                Tra musica grunge, cultura pop e i primi passi di internet, questo decennio racconta una generazione 
+                che cerca nuove identità e nuovi modi di comunicare.
+                Nascono le prime forti mobilitazioni per i diritti civili digitali con la diffusione della rete, 
+                mentre le comunità nere americane insorgono contro la brutalità poliziesca 
+            </p>
+            <img src="assets/anni90.jpeg" loading="lazy" alt="Anni '90">
+            <ion-button routerLink="/decade/90" aria-label="Scopri gli anni '90">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>  
+        </div>
+    </div>
+    <div class="decade" id="00s" style="--bg: rgba(58, 67, 94);">
+        <div class="decade_content">
+            <div class="decade_title" style="color: cornsilk;">Anni 2000</div>
+            <p>
+                L'inizio di una nuova era globale e connessa. 
+                Con l'arrivo dei social network, degli smartphone e delle tecnologie digitali, il mondo cambia ritmo. 
+                È il decennio in cui tutto diventa più veloce, accessibile e interconnesso.
+                Milioni di persone scendono contemporaneamente nelle piazze di tutto il mondo 
+                contro la guerra in Iraq nei primi storici "Global Days of Action".
+            </p>
+            <img src="assets/anni2000.jpeg" loading="lazy" alt="Anni 2000">
+            <ion-button routerLink="/decade/00" aria-label="Scopri gli anni 2000">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>  
+        </div>
+    </div>
+    <div class="footer"></div>
+</ion-content>

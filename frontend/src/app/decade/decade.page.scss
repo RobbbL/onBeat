@@ -1,0 +1,194 @@
+h1, h2, p, span {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.main-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-left: 10px;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background: #eb445a;
+    border-radius: 2px;
+  }
+}
+
+.story {
+  padding: 24px 10px;
+  
+  .story-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+
+    p {
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      line-height: 1.6;
+      color: #4a4a4a;
+      text-align: justify;
+      margin: 0;
+    }
+  }
+}
+
+.artistsList, .RadioList {
+  padding: 24px 0;
+}
+
+ion-grid {
+  padding: 0;
+}
+
+ion-col {
+  padding: 10px;
+}
+
+.artistCard, .radioCard {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 38px rgba(235, 68, 90, 0.15);
+
+    .like-overlay {
+      opacity: 1;
+    }
+
+    .like-badge {
+      transform: scale(1);
+    }
+  }
+}
+
+.img-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  background: #f4f5f8;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.like-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.like-badge {
+  background: #ffffff;
+  color: #eb445a;
+  padding: 8px 16px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(0.8);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  ion-icon {
+    font-size: 18px;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+ion-card-header {
+  padding: 16px 16px 8px 16px;
+
+  ion-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+ion-card-content {
+  padding: 0 16px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+
+  .desc {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #666666;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .genre, .hometown {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #eb445a;
+    background: rgba(235, 68, 90, 0.08);
+    padding: 4px 8px;
+    border-radius: 6px;
+    align-self: flex-start;
+    margin: 4px 0 0 0;
+  }
+
+  .hometown {
+    color: #3880ff;
+    background: rgba(56, 128, 255, 0.08);
+  }
+}

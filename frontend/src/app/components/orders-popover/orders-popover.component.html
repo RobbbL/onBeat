@@ -1,0 +1,38 @@
+<ion-content class="popover-content">
+  <div class="popover-header">
+    <h3>Cronologia Ordini</h3>
+  </div>
+
+  <div *ngIf="loading" class="center-spinner">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div *ngIf="!loading && orders.length === 0" class="empty-state">
+    <ion-icon name="bag-handle-outline"></ion-icon>
+    <p>Non hai ancora effettuato ordini.</p>
+  </div>
+
+  <div class="orders-container" *ngIf="!loading && orders.length > 0">
+    <div class="order-card" *ngFor="let order of orders">
+      
+      <div class="order-card-header">
+        <div class="order-meta">
+          <h2>Ordine #{{ order.id }}</h2>
+          <p>{{ order.created_at | date:'dd/MM/yyyy HH:mm' }}</p>
+        </div>
+        <div class="order-total">
+          {{ order.total | number:'1.2-2' }} €
+        </div>
+      </div>
+
+      <div class="order-items-list" *ngIf="order.products && order.products.length > 0">
+        <div class="sub-title">Articoli acquistati:</div>
+        <div class="item-row" *ngFor="let prod of order.products">
+          <span class="item-name">{{ prod.product_name }}</span>
+          <span class="item-price">{{ prod.price | number:'1.2-2' }} €</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

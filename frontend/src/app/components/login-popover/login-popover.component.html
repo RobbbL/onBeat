@@ -1,0 +1,64 @@
+<ion-content class="login-content" fullscreen>
+
+  <div class="login-container">
+    <div class="login-card">
+
+      <h1>Login</h1>
+      <p class="subtitle">Bentornato su OnBeat! Accedi al tuo profilo per continuare.</p>
+
+      <ion-list lines="none">
+        
+        <div class="inputGroup">
+          <label>Username</label>
+          <ion-input
+            type="text"
+            placeholder="Inserisci il tuo username"
+            [(ngModel)]="username">
+          </ion-input>
+        </div>
+
+        <div class="inputGroup">
+          <label>Password</label>
+          <ion-input
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Inserisci la tua password"
+            [(ngModel)]="password">
+          </ion-input>
+        </div>
+
+      </ion-list>
+
+      <div class="error-container" *ngIf="errorMessage">
+        <p class="error-text">{{ errorMessage }}</p>
+      </div>
+
+      <div class="actions">
+        <ion-button
+          expand="block"
+          class="login-button"
+          [disabled]="loading || !username || !password"
+          (click)="login()">
+          {{ loading ? 'Accesso...' : 'Accedi' }}
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          fill="outline"
+          class="register-button"
+          (click)="goToRegistration()">
+          Registrati
+        </ion-button>
+
+        <ion-button 
+          fill="clear" 
+          size="small"
+          class="recoverButton"
+          (click)="recoverPassword()">
+          Password dimenticata?
+        </ion-button>
+      </div>
+
+    </div>
+  </div>
+  
+</ion-content>

@@ -1,0 +1,23 @@
+<div class="searchContainer">
+  <input
+    type="text"
+    class="searchBar"
+    [placeholder]="getPlaceholder()"
+    [(ngModel)]="searchTerm"
+    (input)="onSearch()"
+  />
+
+  <div class="searchResults" *ngIf="results.length">
+    <a *ngFor="let item of results" class="artistResult" (click)="select(item)">
+      
+      <img *ngIf="item.image" [src]="item.image" [alt]="item.name">
+
+      <div class="artistInfo">
+        <h4>{{ item.event_name || item.name }}</h4>
+        
+        <p>{{ getSubtitle(item) }}</p>
+      </div>
+
+    </a>
+  </div>
+</div>

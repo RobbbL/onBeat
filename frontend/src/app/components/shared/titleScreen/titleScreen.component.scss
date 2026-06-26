@@ -1,0 +1,56 @@
+h1, p{
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.titleScreen{
+  position: relative;
+  height: 70vh;
+  width: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.titleScreen::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0,0,0,0.35);
+
+  backdrop-filter: blur(1px);
+
+  z-index: 0;
+}
+
+.titleScreen h1,
+.titleScreen p{
+  position: relative;
+  z-index: 1;
+}
+
+.titleScreen h1{
+  font-size: clamp(4rem, 7vw, 8rem);
+  text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+
+  -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+  letter-spacing: 2px;
+}
+
+.titleScreen p{
+  font-size: clamp(1rem, 2vw, 2rem);
+  text-shadow: 0 4px 25px rgba(0,0,0,0.6);
+  text-align: center;
+
+  opacity: 0.9;
+  letter-spacing: 1px;
+}

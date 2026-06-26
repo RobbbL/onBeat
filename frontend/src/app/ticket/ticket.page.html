@@ -1,0 +1,70 @@
+<ion-content [fullscreen]="true">
+  <div>
+    <app-title-space 
+      title="Biglietti ed Eventi"
+      subtitle="Trova i ticket ufficiali per i concerti dei tuoi artisti preferiti">
+      <button class="map-toggle-btn" (click)="toggleMap()">
+        {{ showMap ? 'Nascondi Mappa' : 'Mostra Mappa Eventi' }}
+      </button>
+    </app-title-space>
+
+    <div class="search-card">
+      <div class="search-wrapper">
+        <p>Filtra per artista...</p>
+        <app-search-bar searchType="artist" (selectItem)="goToArtist($event)"></app-search-bar>
+        <button class="reset-filter-btn" *ngIf="selectedArtistName" (click)="resetFilter()">
+          Reset filtro
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tickets-container">
+    <div class="map-wrapper" *ngIf="showMap">
+      <app-event-map [tickets]="filteredTickets" (buyTicket)="onBuyTicket($event)"></app-event-map>
+    </div>
+    
+    <div class="tickets-grid" *ngIf="filteredTickets.length > 0; else noTickets">
+      <div class="ticket-card" *ngFor="let ticket of filteredTickets">
+        
+        <div class="ticket-stub-visual"></div>
+
+        <div class="ticket-main-content">
+          <div class="artist-badge">{{ ticket.type }}</div>
+          <h4 class="artist-name">
+            {{ ticket.artist_name }}
+          </h4>
+
+          <h2 class="event-title">{{ ticket.event_name }}</h2>
+          
+          <div class="ticket-details">
+            <div class="detail-item">
+              <span class="label">Luogo</span>
+              <span class="value location-clickable" (click)="focusOnEvent(ticket)">
+                {{ ticket.place }} 📍
+              </span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Data</span>
+              <span class="value">{{ formatDate(ticket.date) }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-buy-section">
+          <div class="price-tag">
+            <span class="amount">{{ ticket.price }}</span>
+            <span class="currency">€</span>
+          </div>
+          <button class="buy-btn" (click)="onBuyTicket(ticket)">Acquista</button>
+        </div>
+
+      </div>
+    </div>
+
+    <ng-template #noTickets>
+      <p class="no-tickets-message">Nessun evento disponibile al momento</p>
+    </ng-template>
+
+  </div>
+</ion-content>
